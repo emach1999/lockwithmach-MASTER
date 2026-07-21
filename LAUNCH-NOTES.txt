@@ -1,0 +1,30 @@
+LOCK WITH MACH — LAUNCH-READY HOMEPAGE
+
+This package has been cleaned, consolidated, and tested.
+
+Verified:
+- npm run build passes
+- npm run lint passes
+- Development server returns successfully
+- Responsive desktop/tablet/mobile CSS included
+- Navigation, phone, email, and scheduling links included
+- SEO metadata and structured data included
+
+To run locally:
+1. Open this folder in VS Code.
+2. Open Terminal > New Terminal.
+3. Run: npm install
+4. Run: npm run dev
+5. Open the local address shown in the terminal.
+
+Production build:
+- Run: npm run build
+- The finished production files are created in the dist folder.
+
+Primary contact details used:
+Eric Mach
+Mortgage PRO Loan Services
+NMLS #2510620
+214-683-9034
+eric@mtg-pro.com
+https://calendar.app.google/RgxDCZDHUD7gUCXc6

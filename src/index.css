@@ -1,0 +1,5 @@
+* { box-sizing: border-box; }
+html { margin: 0; padding: 0; scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { margin: 0; padding: 0; min-width: 320px; min-height: 100vh; }
+#root { width: 100%; min-height: 100vh; }
+::selection { background: #d9b54c; color: #06192d; }
