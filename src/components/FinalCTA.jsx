@@ -1,32 +1,30 @@
 function FinalCTA() {
   return (
     <section className="final-cta">
-
       <p className="eyebrow">
         Ready to Build Your Mortgage Game Plan™?
       </p>
 
       <h2>
-        Your Next Home Begins
+        Your Next Move Starts
         <br />
         With the Right Strategy.
       </h2>
 
       <p>
-        Buying a home doesn't have to be confusing or overwhelming. Let's build
-        a personalized Mortgage Game Plan™ that gives you clarity, confidence,
-        and a strategy designed specifically for your goals.
+        You don't need to have all the answers before we talk. Tell me what
+        you're trying to accomplish, and I'll help you understand your options,
+        your numbers, and the best path forward.
       </p>
 
       <div className="hero-actions final-cta-actions">
-
         <a
           className="button button-gold"
           href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
           target="_blank"
           rel="noreferrer"
         >
-          Schedule Your Free Mortgage Game Plan™
+          Build My Mortgage Game Plan™
         </a>
 
         <a
@@ -35,13 +33,11 @@ function FinalCTA() {
         >
           Call or Text (214) 683-9034
         </a>
-
       </div>
 
       <p className="final-cta-tagline">
         Educate. Strategize. Close.
       </p>
-
     </section>
   );
 }

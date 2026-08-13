@@ -8,23 +8,23 @@ import {
 const items = [
   {
     icon: GraduationCap,
-    title: "26+ Years",
-    text: "Teaching, coaching, and helping people make confident financial decisions.",
+    title: "26 Years Educating",
+    text: "A career built around simplifying complex concepts and helping people succeed.",
   },
   {
     icon: Lightbulb,
     title: "Strategy First",
-    text: "Every mortgage starts with a personalized Mortgage Game Plan™ designed around your goals.",
+    text: "Every mortgage starts with a personalized Mortgage Game Plan™ built around your goals.",
   },
   {
     icon: Landmark,
-    title: "Mortgage Solutions",
-    text: "From first homes to VA loans, refinancing, and investment properties—we'll find the right fit.",
+    title: "More Loan Options",
+    text: "Conventional, FHA, VA, USDA, investment, refinance, and specialized mortgage solutions.",
   },
   {
     icon: Handshake,
     title: "Serving Texas",
-    text: "Honest advice, responsive communication, and guidance from application to closing.",
+    text: "Personal guidance, clear communication, and support from our first conversation through closing.",
   },
 ];
 

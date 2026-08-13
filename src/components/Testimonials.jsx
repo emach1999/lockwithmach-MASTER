@@ -3,21 +3,21 @@ import { MessageCircleMore, BrainCircuit, House } from "lucide-react";
 const experiences = [
   {
     icon: MessageCircleMore,
-    title: "You'll Never Wonder What's Next",
+    title: "Clear Communication",
     text:
-      "Buying a home can feel overwhelming when you're left guessing. I'll keep you informed with proactive updates and clear communication from application to closing.",
+      "You shouldn't have to wonder what's happening with your loan. I'll provide proactive updates and help you understand what comes next from application through closing.",
   },
   {
     icon: BrainCircuit,
-    title: "You'll Understand Every Decision",
+    title: "Answers You Can Understand",
     text:
-      "You don't need to become a mortgage expert. My job is to explain your options in plain English so you can make confident decisions without unnecessary stress.",
+      "Mortgage terminology can get complicated quickly. I'll explain your options in plain English so you understand the decisions you're making and why they matter.",
   },
   {
     icon: House,
-    title: "You'll Have a Mortgage Partner for Life",
+    title: "A Long-Term Mortgage Resource",
     text:
-      "Closing isn't the end of our relationship. Whether you're refinancing, purchasing another home, investing, or simply have questions years from now, I'll still be here to help.",
+      "My job doesn't end at closing. Whether you're considering a refinance, buying another home, investing, or simply have a mortgage question in the future, I want to be the person you call.",
   },
 ];
 
@@ -25,21 +25,18 @@ function Testimonials() {
   return (
     <section className="testimonials-section" id="testimonials">
       <div className="section-heading section-heading-centered">
-        <p className="eyebrow">
-          The Lock With Mach Experience
-        </p>
+        <p className="eyebrow">The Lock With Mach Experience</p>
 
         <h2>
-          You Deserve More Than
+          More Than a Transaction.
           <br />
-          Just a Loan Officer.
+          A Better Mortgage Experience.
         </h2>
 
         <p>
-          My goal isn't simply to get you to closing. It's to give you the
-          confidence that comes from understanding your options, having a
-          strategy, and knowing someone is looking out for your best interests
-          every step of the way.
+          My goal is to make the mortgage process easier to understand and
+          easier to navigate—with clear communication, thoughtful guidance,
+          and a strategy built around your goals.
         </p>
       </div>
 

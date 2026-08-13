@@ -16,9 +16,7 @@ const cities = [
 function ServiceArea() {
   return (
     <section className="service-section" id="service-area">
-
       <div className="service-copy">
-
         <p className="eyebrow">
           North Texas Roots. Statewide Reach.
         </p>
@@ -26,24 +24,24 @@ function ServiceArea() {
         <h2>
           Local Guidance.
           <br />
-          Serving Homebuyers Across Texas.
+          Mortgage Solutions Across Texas.
         </h2>
 
         <p>
-          I'm proud to call North Texas home and to help buyers,
-          homeowners, veterans, and real estate investors throughout
-          the state. Whether you're purchasing your first home or your
-          fifth, you'll receive the same personal guidance and clear
-          communication every step of the way.
+          I'm based in North Texas and serve homebuyers, homeowners, veterans,
+          and real estate investors throughout the state. Whether you're buying
+          your first home, moving into your next one, refinancing, or investing,
+          you'll receive personal guidance and clear communication every step
+          of the way.
         </p>
 
         <a
           className="text-link"
           href="#contact"
         >
-          Schedule My Mortgage Game Plan™ Meeting          <span aria-hidden="true"> →</span>
+          Let's Talk About Your Mortgage Game Plan™
+          <span aria-hidden="true"> →</span>
         </a>
-
       </div>
 
       <div
@@ -54,7 +52,6 @@ function ServiceArea() {
           <span key={city}>{city}</span>
         ))}
       </div>
-
     </section>
   );
 }

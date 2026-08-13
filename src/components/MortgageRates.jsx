@@ -4,23 +4,23 @@ export default function MortgageRates() {
       <div className="container">
 
         <div className="market-badge">
-          📈 LIVE MORTGAGE MARKET
+          📈 MORTGAGE MARKET
         </div>
 
         <p className="rates-intro">
-          I believe informed buyers make confident buyers. These national
-          mortgage rate averages are updated automatically each day to help
-          you understand today's market. Your personalized interest rate will
-          depend on your credit profile, loan program, down payment, and
-          financial goals.
+          Staying informed about the market is an important part of your
+          Mortgage Game Plan™. The rates below are national averages provided
+          by Mortgage News Daily and are intended to give you a general view
+          of current market conditions. Your actual rate will depend on your
+          specific loan scenario.
         </p>
 
         <div className="rates-card">
-
           <div
             className="mnd-rates-widget"
             style={{
               width: "650px",
+              maxWidth: "100%",
               height: "340px",
               fontSize: "12px",
               margin: "0 auto",
@@ -54,11 +54,11 @@ export default function MortgageRates() {
               height="290"
               frameBorder="0"
               scrolling="no"
-              title="Mortgage Rates"
+              title="National Mortgage Rate Averages"
               style={{
                 border: "solid 1px #154070",
                 borderWidth: "0 1px",
-                width: "650px",
+                width: "100%",
                 height: "290px",
                 display: "block",
               }}
@@ -73,7 +73,7 @@ export default function MortgageRates() {
                 color: "#fff",
               }}
             >
-              View More{" "}
+              Data provided by{" "}
               <a
                 href="https://www.mortgagenewsdaily.com/mortgage-rates"
                 target="_blank"
@@ -83,23 +83,22 @@ export default function MortgageRates() {
                   textDecoration: "none",
                 }}
               >
-                Mortgage Rates
+                Mortgage News Daily
               </a>
             </div>
           </div>
-
         </div>
 
         <p className="rates-disclaimer">
-          Mortgage rates shown are national market averages provided by
-          Mortgage News Daily and are for informational purposes only.
-          Contact me for a personalized rate quote based on your unique
-          financial situation.
+          Rates shown are national averages for informational purposes only
+          and are not an offer to lend or a personalized rate quote. Actual
+          rates, fees, and loan terms vary based on the borrower, property,
+          loan program, market conditions, and other factors.
         </p>
 
         <div className="rates-cta">
           <a href="#contact" className="primary-button">
-            Schedule Your Mortgage Game Plan™
+            Get My Personalized Mortgage Game Plan™
           </a>
         </div>
 
