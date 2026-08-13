@@ -209,11 +209,11 @@ export default function MortgageCalculator() {
           </div>
 
           <h1
-            style={{
-              fontSize: "clamp(40px, 6vw, 66px)",
-              lineHeight: "1.03",
-              margin: "0 0 22px",
-            }}
+              style={{
+    fontSize: "clamp(40px, 6vw, 66px)",
+    lineHeight: "1.03",
+    margin: "0 0 22px",
+  }}
           >
             Turn a Home Price Into
             <br />
