@@ -29,6 +29,14 @@ export default function Header() {
       name: "Home Affordability Calculator",
       path: "/home-affordability-calculator",
     },
+    {
+      name: "Refinance Calculator",
+      path: "/refinance-calculator",
+    },
+    {
+      name: "Rent vs. Buy Calculator",
+      path: "/rent-vs-buy-calculator",
+    },
   ];
 
   const closeEverything = () => {
@@ -73,11 +81,7 @@ export default function Header() {
 
   return (
     <header className="site-header">
-      <Link
-        to="/"
-        className="brand"
-        onClick={closeEverything}
-      >
+      <Link to="/" className="brand" onClick={closeEverything}>
         <img src={logo} alt="Lock With Mach" />
       </Link>
 
@@ -99,17 +103,11 @@ export default function Header() {
           Home
         </NavLink>
 
-        <NavLink
-          to="/mortgage-game-plan"
-          onClick={closeEverything}
-        >
+        <NavLink to="/mortgage-game-plan" onClick={closeEverything}>
           Mortgage Game Plan™
         </NavLink>
 
-        <div
-          className="nav-dropdown"
-          ref={loanDropdownRef}
-        >
+        <div className="nav-dropdown" ref={loanDropdownRef}>
           <button
             type="button"
             className="nav-dropdown-label"
@@ -150,10 +148,7 @@ export default function Header() {
           )}
         </div>
 
-        <div
-          className="nav-dropdown"
-          ref={calculatorDropdownRef}
-        >
+        <div className="nav-dropdown" ref={calculatorDropdownRef}>
           <button
             type="button"
             className="nav-dropdown-label"

@@ -27,6 +27,8 @@ import RefinancePage from "./pages/Refinance";
 import BuyBeforeYouSell from "./pages/BuyBeforeYouSell";
 import MortgageCalculator from "./pages/MortgageCalculator";
 import HomeAffordabilityCalculator from "./pages/HomeAffordabilityCalculator";
+import RefinanceCalculator from "./pages/RefinanceCalculator";
+import RentVsBuyCalculator from "./pages/RentVsBuyCalculator";
 
 import "./App.css";
 
@@ -191,6 +193,16 @@ function App() {
         <Route
           path="/home-affordability-calculator"
           element={<HomeAffordabilityCalculator />}
+        />
+
+        <Route
+          path="/refinance-calculator"
+          element={<RefinanceCalculator />}
+        />
+
+        <Route
+          path="/rent-vs-buy-calculator"
+          element={<RentVsBuyCalculator />}
         />
 
         <Route
