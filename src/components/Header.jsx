@@ -119,6 +119,13 @@ export default function Header() {
           )}
         </div>
 
+        <NavLink
+          to="/mortgage-calculator"
+          onClick={closeEverything}
+        >
+          Calculators
+        </NavLink>
+
         <a href="/#about" onClick={closeEverything}>
           About Eric
         </a>

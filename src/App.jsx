@@ -25,6 +25,7 @@ import FirstTimeHomebuyersPage from "./pages/FirstTimeHomebuyers";
 import InvestmentLoansPage from "./pages/InvestmentLoans";
 import RefinancePage from "./pages/Refinance";
 import BuyBeforeYouSell from "./pages/BuyBeforeYouSell";
+import MortgageCalculator from "./pages/MortgageCalculator";
 
 import "./App.css";
 
@@ -179,6 +180,11 @@ function App() {
         <Route
           path="/mortgage-game-plan"
           element={<MortgageGamePlanPage />}
+        />
+
+        <Route
+          path="/mortgage-calculator"
+          element={<MortgageCalculator />}
         />
 
         <Route
