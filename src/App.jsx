@@ -29,6 +29,7 @@ import MortgageCalculator from "./pages/MortgageCalculator";
 import HomeAffordabilityCalculator from "./pages/HomeAffordabilityCalculator";
 import RefinanceCalculator from "./pages/RefinanceCalculator";
 import RentVsBuyCalculator from "./pages/RentVsBuyCalculator";
+import ClosingCostCalculator from "./pages/ClosingCostCalculator";
 
 import "./App.css";
 
@@ -203,6 +204,11 @@ function App() {
         <Route
           path="/rent-vs-buy-calculator"
           element={<RentVsBuyCalculator />}
+        />
+
+        <Route
+          path="/closing-cost-calculator"
+          element={<ClosingCostCalculator />}
         />
 
         <Route
