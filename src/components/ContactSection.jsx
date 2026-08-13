@@ -8,16 +8,17 @@ function ContactSection() {
         </p>
 
         <h2>
-          You Don't Need All the Answers.
+          You Don't Need to Have
           <br />
-          You Just Need the Right Guide.
+          Everything Figured Out.
         </h2>
 
         <p>
-          Whether you're buying your first home, moving into your next one,
-          investing, refinancing, or simply exploring your options, your first
-          conversation with me is designed to answer your questions—not pressure
-          you into a loan.
+          Whether you're buying your first home, upgrading to your next one,
+          refinancing, investing, or simply wondering what your options are,
+          our first conversation is all about you. We'll answer your questions,
+          explore your options, and determine the best path forward—without
+          pressure or obligation.
         </p>
 
         <div className="contact-promise">
@@ -32,7 +33,7 @@ function ContactSection() {
 
             <small>
               Just honest advice, a personalized Mortgage Game Plan™, and
-              clear next steps.
+              clear next steps designed around your goals.
             </small>
 
           </div>
@@ -54,9 +55,9 @@ function ContactSection() {
           </h3>
 
           <p>
-            We'll discuss your goals, answer your questions, review your
-            options, and build a Mortgage Game Plan™ that's tailored to
-            your situation.
+            We'll discuss your goals, answer your questions, compare financing
+            options, and build a personalized Mortgage Game Plan™ before you
+            make any major decisions.
           </p>
 
           <a
@@ -73,13 +74,12 @@ function ContactSection() {
         <article className="contact-card">
 
           <h3>
-            Call or Text Eric
+            Call or Text Me
           </h3>
 
           <p>
-            Have a quick question? Give me a call or send a text.
-            If I'm helping another client, I'll get back to you as
-            soon as I can.
+            Have a quick question? Give me a call or send me a text. If I'm
+            with another client, I'll get back to you as soon as possible.
           </p>
 
           <a
@@ -94,12 +94,12 @@ function ContactSection() {
         <article className="contact-card">
 
           <h3>
-            Send an Email
+            Send Me an Email
           </h3>
 
           <p>
-            Tell me a little about your situation and I'll personally
-            respond with guidance on the best next step.
+            Tell me a little about your situation, and I'll personally respond
+            with guidance on the best next step for you.
           </p>
 
           <a

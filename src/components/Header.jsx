@@ -2,36 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/lock-with-mach-logo.png";
 
-function Header() {
+export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const dropdownRef = useRef(null);
-
-  const closeAll = () => {
-    setMenuOpen(false);
-    setDropdownOpen(false);
-  };
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
-      ) {
-        setDropdownOpen(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener(
-        "mousedown",
-        handleClickOutside
-      );
-    };
-  }, []);
 
   const loanPrograms = [
     { name: "First-Time Homebuyers", path: "/first-time-homebuyers" },
@@ -43,23 +18,42 @@ function Header() {
     { name: "Refinancing", path: "/refinancing" },
   ];
 
+  const closeEverything = () => {
+    setMenuOpen(false);
+    setDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target)
+      ) {
+        setDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, []);
+
   return (
     <header className="site-header">
       <Link
         to="/"
         className="brand"
-        aria-label="Lock With Mach Home"
-        onClick={closeAll}
+        onClick={closeEverything}
       >
         <img src={logo} alt="Lock With Mach" />
       </Link>
 
       <button
         className="menu-toggle"
-        type="button"
-        aria-label="Toggle navigation"
-        aria-expanded={menuOpen}
         onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle navigation"
       >
         <span />
         <span />
@@ -70,22 +64,44 @@ function Header() {
         className={`site-nav ${menuOpen ? "is-open" : ""}`}
         aria-label="Primary navigation"
       >
-        <NavLink to="/" onClick={closeAll}>
+        <NavLink to="/" onClick={closeEverything}>
           Home
         </NavLink>
 
-        <NavLink to="/mortgage-game-plan" onClick={closeAll}>
+        <NavLink
+          to="/mortgage-game-plan"
+          onClick={closeEverything}
+        >
           Mortgage Game Plan™
         </NavLink>
 
-        <div className="nav-dropdown" ref={dropdownRef}>
+        <div
+          className="nav-dropdown"
+          ref={dropdownRef}
+        >
           <button
             type="button"
             className="nav-dropdown-label"
             onClick={() => setDropdownOpen(!dropdownOpen)}
+            aria-expanded={dropdownOpen}
+            aria-haspopup="true"
           >
             Loan Solutions
-            <span>{dropdownOpen ? "▲" : "▼"}</span>
+
+            <svg
+              className={`chevron ${dropdownOpen ? "rotate" : ""}`}
+              width="12"
+              height="12"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+            >
+              <path
+                d="M5 7l5 6 5-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              />
+            </svg>
           </button>
 
           {dropdownOpen && (
@@ -94,7 +110,7 @@ function Header() {
                 <NavLink
                   key={loan.path}
                   to={loan.path}
-                  onClick={closeAll}
+                  onClick={closeEverything}
                 >
                   {loan.name}
                 </NavLink>
@@ -103,11 +119,11 @@ function Header() {
           )}
         </div>
 
-        <a href="/#about" onClick={closeAll}>
+        <a href="/#about" onClick={closeEverything}>
           About Eric
         </a>
 
-        <a href="/#contact" onClick={closeAll}>
+        <a href="/#contact" onClick={closeEverything}>
           Contact
         </a>
       </nav>
@@ -123,5 +139,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

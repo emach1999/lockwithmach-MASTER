@@ -12,44 +12,44 @@ import { Link } from "react-router-dom";
 const solutions = [
   {
     icon: Home,
-    title: "Buying Your First Home",
-    text: "Buying your first home shouldn't feel overwhelming. I'll explain every step, answer every question, and help you choose the financing strategy that's right for you.",
+    title: "First-Time Homebuyers",
+    text: "Buying your first home doesn't have to be confusing. I'll walk you through every step, explain your options in plain English, and help you buy with confidence.",
     link: "/first-time-homebuyers",
   },
   {
     icon: Landmark,
-    title: "FHA & Conventional Loans",
-    text: "Whether you're purchasing with a low down payment or looking for the flexibility of a conventional mortgage, we'll compare your options and build the strategy that fits your goals.",
+    title: "Conventional & FHA Loans",
+    text: "Whether you're putting 3% down or 20% down, we'll compare your options and build the financing strategy that best fits your goals—not just today's purchase.",
     link: "/fha-loans",
   },
   {
     icon: ShieldCheck,
     title: "VA Loans",
-    text: "You've earned one of the best mortgage benefits available. I'll help you understand every advantage and maximize what you've earned.",
+    text: "You've earned one of the best mortgage benefits available. I'll help you maximize your VA eligibility while making the process simple and stress-free.",
     link: "/va-loans-texas",
   },
   {
     icon: MoveRight,
     title: "Buy Before You Sell",
-    text: "Use the equity in your current home to buy your next one first, avoid contingent offers, and move on your own timeline.",
+    text: "Use the equity in your current home to purchase your next home first, eliminate contingent offers, and move on your own timeline.",
     link: "/buy-before-you-sell",
   },
   {
     icon: Briefcase,
-    title: "Self-Employed",
-    text: "Business owner? Self-employed? Traditional income isn't your only option. We'll explore bank statement and other flexible lending solutions.",
+    title: "Self-Employed & Non-Traditional Income",
+    text: "Own a business or have income that doesn't fit the traditional mold? We'll explore flexible loan programs designed for entrepreneurs and self-employed professionals.",
     link: "/contact",
   },
   {
     icon: Building2,
     title: "Investment Properties",
-    text: "Whether you're buying your first rental or expanding your portfolio, we'll create a financing strategy that supports your long-term investment goals.",
+    text: "Whether you're buying your first rental or expanding your portfolio, I'll help you choose financing that supports your long-term investment strategy.",
     link: "/investment-loans",
   },
   {
     icon: BadgeDollarSign,
     title: "Refinancing",
-    text: "Reduce your payment, access equity, consolidate debt, or simply review whether refinancing still makes sense in today's market.",
+    text: "Whether your goal is lowering your payment, accessing equity, or consolidating debt, we'll determine if refinancing still makes sense in today's market.",
     link: "/refinancing",
   },
 ];
@@ -62,17 +62,17 @@ function LoanSolutions() {
           <p className="eyebrow">Loan Solutions</p>
 
           <h2>
-            Every Homebuyer Has a Different Story.
+            One Mortgage Doesn't Fit Everyone.
             <br />
-            Your Mortgage Should Reflect It.
+            Your Strategy Should Be Built Around You.
           </h2>
         </div>
 
         <p>
-          Every borrower has different goals, finances, and priorities.
-          We start with your Mortgage Game Plan™ and then match you with
-          the financing strategy that supports your long-term success—not
-          just today's purchase.
+          Every borrower has unique goals, finances, and priorities. That's
+          why every client starts with a Mortgage Game Plan™. Together we'll
+          build a financing strategy that fits your situation—not force you
+          into a one-size-fits-all loan.
         </p>
       </div>
 
@@ -97,6 +97,20 @@ function LoanSolutions() {
             </article>
           );
         })}
+      </div>
+
+      <div className="solutions-footer">
+        <h3>Don't See Your Situation?</h3>
+
+        <p>
+          Jumbo loans, bank statement loans, investment financing, renovation
+          loans, bridge loans, and many other options may be available. If
+          your situation is unique, let's build a strategy together.
+        </p>
+
+        <Link className="button button-primary" to="/contact">
+          Let's Build Your Mortgage Game Plan™
+        </Link>
       </div>
     </section>
   );

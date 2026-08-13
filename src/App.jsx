@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import MortgageRates from "./components/MortgageRates";
 import TrustIndicators from "./components/TrustIndicators";
 import WhyChooseUs from "./components/WhyChooseUs";
 import MortgageGamePlanSection from "./components/MortgageGamePlan";
@@ -82,6 +83,10 @@ function HomePage() {
   return (
     <>
       <Hero />
+
+      <section className="reveal-section">
+        <MortgageRates />
+      </section>
 
       <section className="reveal-section">
         <TrustIndicators />

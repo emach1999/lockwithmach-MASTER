@@ -7,15 +7,15 @@ function FinalCTA() {
       </p>
 
       <h2>
-        Let's Turn Uncertainty
+        Your Next Home Begins
         <br />
-        Into Confidence.
+        With the Right Strategy.
       </h2>
 
       <p>
-        Whether you're buying your first home, moving into your next one,
-        investing, or refinancing, I'll help you build a personalized
-        strategy so you can move forward with clarity and confidence.
+        Buying a home doesn't have to be confusing or overwhelming. Let's build
+        a personalized Mortgage Game Plan™ that gives you clarity, confidence,
+        and a strategy designed specifically for your goals.
       </p>
 
       <div className="hero-actions final-cta-actions">
@@ -26,7 +26,7 @@ function FinalCTA() {
           target="_blank"
           rel="noreferrer"
         >
-          Schedule My Free Strategy Call
+          Schedule Your Free Mortgage Game Plan™
         </a>
 
         <a
@@ -39,7 +39,7 @@ function FinalCTA() {
       </div>
 
       <p className="final-cta-tagline">
-        Complex Mortgage Decisions. Clear Guidance.
+        Educate. Strategize. Close.
       </p>
 
     </section>

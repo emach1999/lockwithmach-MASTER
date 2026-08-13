@@ -17,7 +17,6 @@ function AboutEric() {
       </div>
 
       <div className="about-content">
-
         <p className="eyebrow">
           Meet Eric Mach
         </p>
@@ -29,37 +28,36 @@ function AboutEric() {
         </h2>
 
         <p className="about-intro">
-          Buying a home is one of the biggest financial decisions you'll ever
-          make. You deserve someone who takes the time to explain it clearly,
-          answer your questions honestly, and help you move forward with
-          confidence.
+          A mortgage isn't just a loan—it's one of the biggest financial
+          decisions you'll ever make. You deserve someone who explains the
+          process clearly, answers your questions honestly, and helps you make
+          confident decisions from start to finish.
         </p>
 
         <p>
           Before becoming a mortgage loan originator, I spent more than
           26 years teaching physics and coaching high school football.
-          Every day, my job was to simplify complex concepts, build
-          confidence, and help people succeed.
+          Every day I helped students understand complex concepts, built
+          game plans with athletes, and guided people toward achieving goals
+          they once thought were out of reach.
         </p>
 
         <p>
-          Today, I bring that same philosophy to home financing.
-          Whether you're buying your first home, purchasing an investment
-          property, refinancing, or making your next move, I'll help you
-          understand your options, build a personalized Mortgage Game
-          Plan™, and make informed decisions every step of the way.
+          Today, I bring that same approach to home financing. Whether you're
+          buying your first home, upgrading to your next home, refinancing,
+          purchasing an investment property, or navigating a unique financial
+          situation, my job is to educate you, build the right strategy, and
+          help you move forward with confidence.
         </p>
 
         <div className="about-promise">
-
           <span>My Promise To You</span>
 
           <strong>
-            I'll treat your mortgage like it's my own—with honesty,
-            strategy, and clear communication from our first conversation
-            through closing day.
+            I'll treat your mortgage the same way I treated every classroom and
+            every football team—with preparation, honesty, communication, and a
+            commitment to helping you succeed.
           </strong>
-
         </div>
 
         <a
@@ -68,9 +66,8 @@ function AboutEric() {
           target="_blank"
           rel="noreferrer"
         >
-          Schedule My Free Strategy Call
+          Schedule Your Free Mortgage Game Plan™
         </a>
-
       </div>
     </section>
   );

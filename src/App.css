@@ -42,10 +42,113 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .brand { width: 214px; text-decoration: none; }
 .brand img { width: 100%; height: 58px; object-fit: contain; object-position: left center; }
-.site-nav { display: flex; justify-content: center; gap: 30px; }
-.site-nav a { position: relative; color: #30475f; font-size: 13px; font-weight: 800; text-decoration: none; }
-.site-nav a::after { position: absolute; right: 0; bottom: -8px; left: 0; height: 2px; background: var(--gold); content: ""; transform: scaleX(0); transition: transform .2s ease; }
-.site-nav a:hover::after { transform: scaleX(1); }
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.site-nav > a,
+.nav-dropdown-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: color .2s ease;
+}
+
+.site-nav > a::after,
+.nav-dropdown-label::after {
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  left: 0;
+  height: 2px;
+  background: var(--gold);
+  content: "";
+  transform: scaleX(0);
+  transition: transform .2s ease;
+}
+
+.site-nav > a:hover::after,
+.nav-dropdown-label:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-dropdown-label span {
+  color: var(--gold);
+  font-size: 8px;
+  line-height: 1;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 50%;
+  z-index: 1100;
+  display: flex;
+  width: 270px;
+  min-width: 270px;
+  flex-direction: column;
+  padding: 9px;
+  overflow: hidden;
+  border: 1px solid rgba(11, 43, 77, .1);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(11, 43, 77, .18);
+  transform: translateX(-50%);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 9px;
+  color: #30475f;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.35;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .2s ease, color .2s ease;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a.active {
+  background: var(--surface);
+  color: var(--navy);
+}
+
+.dropdown-menu a::after {
+  display: none;
+}
 .header-cta { padding: 13px 18px; border-radius: 999px; background: var(--navy); color: #fff; font-size: 12px; font-weight: 900; text-decoration: none; transition: transform .2s ease, background .2s ease; }
 .header-cta:hover { background: var(--navy-soft); transform: translateY(-2px); }
 .menu-toggle { display: none; width: 44px; height: 44px; padding: 10px; border: 0; background: transparent; }
@@ -196,8 +299,41 @@ h2 { margin: 0; color: var(--navy); font-size: clamp(39px, 4.6vw, 64px); line-he
   .header-cta { order: 3; }
   .site-nav { position: absolute; top: 100%; right: 0; left: 0; display: none; flex-direction: column; gap: 0; padding: 12px 22px 22px; border-bottom: 1px solid var(--line); background: #fff; box-shadow: 0 16px 30px rgba(11,43,77,.1); }
   .site-nav.is-open { display: flex; }
-  .site-nav a { padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .site-nav a::after { display: none; }
+  .site-nav > a { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .site-nav > a::after,
+  .nav-dropdown-label::after { display: none; }
+
+  .nav-dropdown {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-dropdown-label {
+    width: 100%;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    padding: 6px 0 8px 16px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .dropdown-menu a {
+    padding: 11px 12px;
+    border: 0;
+    border-radius: 8px;
+  }
   .hero { grid-template-columns: 1fr; min-height: auto; text-align: center; }
   .hero-copy, .hero-lead { margin-right: auto; margin-left: auto; }
   .hero-actions, .hero-proof { justify-content: center; }
@@ -239,4 +375,185 @@ h2 { margin: 0; color: var(--navy); font-size: clamp(39px, 4.6vw, 64px); line-he
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .reveal-section { opacity: 1; transform: none; }
+}
+
+/* ====================================================
+   Mortgage Rates Section
+==================================================== */
+
+.mortgage-rates-section {
+  position: relative;
+  padding: 96px clamp(20px, 7vw, 110px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 15%, rgba(201, 154, 35, 0.11), transparent 28%),
+    linear-gradient(180deg, #f8fafc 0%, #f3f6f9 100%);
+}
+
+.mortgage-rates-section::before {
+  position: absolute;
+  top: -160px;
+  right: -160px;
+  width: 360px;
+  height: 360px;
+  border: 1px solid rgba(11, 43, 77, 0.08);
+  border-radius: 50%;
+  content: "";
+}
+
+.mortgage-rates-section .container {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 980px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.market-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 22px;
+  padding: 9px 17px;
+  border: 1px solid rgba(11, 43, 77, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--navy);
+  box-shadow: 0 8px 24px rgba(11, 43, 77, 0.06);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.rates-intro {
+  max-width: 770px;
+  margin: 0 auto 38px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.rates-card {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 30px;
+  overflow-x: auto;
+  border: 1px solid rgba(11, 43, 77, 0.1);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 24px 60px rgba(11, 43, 77, 0.12);
+  scrollbar-width: thin;
+}
+
+.rates-card .mnd-rates-widget {
+  flex: 0 0 auto;
+  margin: 0 auto !important;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(11, 43, 77, 0.08);
+}
+
+.rates-card .w-header {
+  border-radius: 12px 12px 0 0;
+  font-weight: 800;
+}
+
+.rates-card .w-footer {
+  border-radius: 0 0 12px 12px;
+  font-weight: 700;
+}
+
+.rates-disclaimer {
+  max-width: 760px;
+  margin: 28px auto 0;
+  color: #738193;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.rates-cta {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.primary-button {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: var(--navy);
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(11, 43, 77, 0.2);
+  font-size: 13px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.primary-button:hover {
+  background: var(--navy-soft);
+  box-shadow: 0 18px 36px rgba(11, 43, 77, 0.25);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 760px) {
+  .mortgage-rates-section {
+    padding: 76px 20px;
+  }
+
+  .rates-intro {
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.72;
+  }
+
+  .rates-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .rates-card .mnd-rates-widget {
+    margin-left: 0 !important;
+  }
+
+  .rates-disclaimer {
+    margin-top: 24px;
+    font-size: 12px;
+  }
+
+  .rates-cta {
+    margin-top: 28px;
+  }
+
+  .rates-cta .primary-button {
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mortgage-rates-section {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .market-badge {
+    padding: 9px 14px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .rates-card {
+    padding: 12px;
+  }
 }

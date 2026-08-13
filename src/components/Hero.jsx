@@ -15,9 +15,12 @@ function Hero() {
 
         <p className="hero-lead">
           Buying a home is one of the biggest financial decisions you'll ever
-          make. As a teacher, coach, and licensed mortgage loan originator,
-          I'll help you understand every option so you can move forward with
-          confidence—not confusion.
+          make—and you shouldn't have to navigate it alone. As a former advanced
+          science teacher and Texas football coach, I spent 26 years helping
+          people understand complex concepts and succeed in high-pressure
+          situations. Today, I use that same approach to help Texas homebuyers
+          make informed decisions with clarity, confidence, and a personalized
+          Mortgage Game Plan™.
         </p>
 
         <div className="hero-actions">
@@ -32,16 +35,18 @@ function Hero() {
 
           <a
             className="button button-secondary"
-            href="tel:2146839034"
+            href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
+            target="_blank"
+            rel="noreferrer"
           >
-            Call Eric
+            Schedule a Strategy Call
           </a>
         </div>
 
-        <div className="hero-proof" aria-label="Key benefits">
-          <span>Teacher's Heart</span>
-          <span>Coach's Strategy</span>
-          <span>Serving Homebuyers Across Texas</span>
+        <div className="hero-proof" aria-label="Why choose Lock With Mach?">
+          <span>26 Years Educating Others</span>
+          <span>Licensed Texas Mortgage Professional</span>
+          <span>Conventional • FHA • VA • Investment Loans</span>
         </div>
       </div>
 
@@ -55,7 +60,7 @@ function Hero() {
           <div className="hero-photo-card">
             <strong>26+ Years</strong>
             <span>
-              Teaching, coaching, and helping people make confident decisions.
+              Helping people understand complex decisions with confidence.
             </span>
           </div>
         </div>

@@ -41,8 +41,7 @@ function ServiceArea() {
           className="text-link"
           href="#contact"
         >
-          Let's Talk About Your Mortgage Game Plan™
-          <span aria-hidden="true"> →</span>
+          Schedule My Mortgage Game Plan™ Meeting          <span aria-hidden="true"> →</span>
         </a>
 
       </div>
