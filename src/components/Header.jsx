@@ -4,9 +4,11 @@ import logo from "../assets/lock-with-mach-logo.png";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [loanDropdownOpen, setLoanDropdownOpen] = useState(false);
+  const [calculatorDropdownOpen, setCalculatorDropdownOpen] = useState(false);
 
-  const dropdownRef = useRef(null);
+  const loanDropdownRef = useRef(null);
+  const calculatorDropdownRef = useRef(null);
 
   const loanPrograms = [
     { name: "First-Time Homebuyers", path: "/first-time-homebuyers" },
@@ -18,18 +20,37 @@ export default function Header() {
     { name: "Refinancing", path: "/refinancing" },
   ];
 
+  const calculators = [
+    {
+      name: "Mortgage Payment Calculator",
+      path: "/mortgage-calculator",
+    },
+    {
+      name: "Home Affordability Calculator",
+      path: "/home-affordability-calculator",
+    },
+  ];
+
   const closeEverything = () => {
     setMenuOpen(false);
-    setDropdownOpen(false);
+    setLoanDropdownOpen(false);
+    setCalculatorDropdownOpen(false);
   };
 
   useEffect(() => {
     function handleClick(e) {
       if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target)
+        loanDropdownRef.current &&
+        !loanDropdownRef.current.contains(e.target)
       ) {
-        setDropdownOpen(false);
+        setLoanDropdownOpen(false);
+      }
+
+      if (
+        calculatorDropdownRef.current &&
+        !calculatorDropdownRef.current.contains(e.target)
+      ) {
+        setCalculatorDropdownOpen(false);
       }
     }
 
@@ -39,6 +60,16 @@ export default function Header() {
       document.removeEventListener("mousedown", handleClick);
     };
   }, []);
+
+  const toggleLoanDropdown = () => {
+    setLoanDropdownOpen((current) => !current);
+    setCalculatorDropdownOpen(false);
+  };
+
+  const toggleCalculatorDropdown = () => {
+    setCalculatorDropdownOpen((current) => !current);
+    setLoanDropdownOpen(false);
+  };
 
   return (
     <header className="site-header">
@@ -77,19 +108,19 @@ export default function Header() {
 
         <div
           className="nav-dropdown"
-          ref={dropdownRef}
+          ref={loanDropdownRef}
         >
           <button
             type="button"
             className="nav-dropdown-label"
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            aria-expanded={dropdownOpen}
+            onClick={toggleLoanDropdown}
+            aria-expanded={loanDropdownOpen}
             aria-haspopup="true"
           >
             Loan Solutions
 
             <svg
-              className={`chevron ${dropdownOpen ? "rotate" : ""}`}
+              className={`chevron ${loanDropdownOpen ? "rotate" : ""}`}
               width="12"
               height="12"
               viewBox="0 0 20 20"
@@ -104,7 +135,7 @@ export default function Header() {
             </svg>
           </button>
 
-          {dropdownOpen && (
+          {loanDropdownOpen && (
             <div className="dropdown-menu">
               {loanPrograms.map((loan) => (
                 <NavLink
@@ -119,12 +150,51 @@ export default function Header() {
           )}
         </div>
 
-        <NavLink
-          to="/mortgage-calculator"
-          onClick={closeEverything}
+        <div
+          className="nav-dropdown"
+          ref={calculatorDropdownRef}
         >
-          Calculators
-        </NavLink>
+          <button
+            type="button"
+            className="nav-dropdown-label"
+            onClick={toggleCalculatorDropdown}
+            aria-expanded={calculatorDropdownOpen}
+            aria-haspopup="true"
+          >
+            Calculators
+
+            <svg
+              className={`chevron ${
+                calculatorDropdownOpen ? "rotate" : ""
+              }`}
+              width="12"
+              height="12"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+            >
+              <path
+                d="M5 7l5 6 5-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              />
+            </svg>
+          </button>
+
+          {calculatorDropdownOpen && (
+            <div className="dropdown-menu">
+              {calculators.map((calculator) => (
+                <NavLink
+                  key={calculator.path}
+                  to={calculator.path}
+                  onClick={closeEverything}
+                >
+                  {calculator.name}
+                </NavLink>
+              ))}
+            </div>
+          )}
+        </div>
 
         <a href="/#about" onClick={closeEverything}>
           About Eric

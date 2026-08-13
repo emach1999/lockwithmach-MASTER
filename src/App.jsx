@@ -26,6 +26,7 @@ import InvestmentLoansPage from "./pages/InvestmentLoans";
 import RefinancePage from "./pages/Refinance";
 import BuyBeforeYouSell from "./pages/BuyBeforeYouSell";
 import MortgageCalculator from "./pages/MortgageCalculator";
+import HomeAffordabilityCalculator from "./pages/HomeAffordabilityCalculator";
 
 import "./App.css";
 
@@ -185,6 +186,11 @@ function App() {
         <Route
           path="/mortgage-calculator"
           element={<MortgageCalculator />}
+        />
+
+        <Route
+          path="/home-affordability-calculator"
+          element={<HomeAffordabilityCalculator />}
         />
 
         <Route

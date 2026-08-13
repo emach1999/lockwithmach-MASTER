@@ -1,94 +1,122 @@
 import { useMemo, useState } from "react";
 import {
   Calculator,
-  Home,
+  Wallet,
   DollarSign,
   Percent,
-  Banknote,
+  Home,
 } from "lucide-react";
 
-export default function MortgageCalculator() {
-  const [homePrice, setHomePrice] = useState(400000);
-
-  const [downPaymentMode, setDownPaymentMode] = useState("percent");
-  const [downPaymentPercent, setDownPaymentPercent] = useState(5);
-  const [downPaymentDollars, setDownPaymentDollars] = useState(20000);
-
+export default function HomeAffordabilityCalculator() {
+  const [monthlyIncome, setMonthlyIncome] = useState(10000);
+  const [monthlyDebts, setMonthlyDebts] = useState(750);
+  const [downPayment, setDownPayment] = useState(25000);
   const [interestRate, setInterestRate] = useState(6.5);
   const [loanTerm, setLoanTerm] = useState(30);
+  const [dtiTarget, setDtiTarget] = useState(43);
   const [propertyTaxRate, setPropertyTaxRate] = useState(1.8);
-  const [insurance, setInsurance] = useState(2400);
+  const [insuranceRate, setInsuranceRate] = useState(0.6);
   const [hoa, setHoa] = useState(0);
-  const [mortgageInsurance, setMortgageInsurance] = useState(0);
 
   const results = useMemo(() => {
-    const price = Number(homePrice) || 0;
+    const income = Number(monthlyIncome) || 0;
+    const debts = Number(monthlyDebts) || 0;
+    const down = Number(downPayment) || 0;
     const rate = Number(interestRate) || 0;
     const years = Number(loanTerm) || 30;
-    const taxRate = Number(propertyTaxRate) || 0;
-    const annualInsurance = Number(insurance) || 0;
+    const dti = (Number(dtiTarget) || 0) / 100;
+    const taxRate = (Number(propertyTaxRate) || 0) / 100;
+    const annualInsuranceRate = (Number(insuranceRate) || 0) / 100;
     const monthlyHoa = Number(hoa) || 0;
-    const monthlyMI = Number(mortgageInsurance) || 0;
 
-    let down = 0;
+    const maxTotalDebt = income * dti;
 
-    if (downPaymentMode === "percent") {
-      down = price * ((Number(downPaymentPercent) || 0) / 100);
-    } else {
-      down = Number(downPaymentDollars) || 0;
-    }
-
-    down = Math.min(Math.max(down, 0), price);
-
-    const downPercent = price > 0 ? (down / price) * 100 : 0;
-    const loanAmount = Math.max(price - down, 0);
+    const availableHousingPayment = Math.max(
+      maxTotalDebt - debts - monthlyHoa,
+      0
+    );
 
     const monthlyRate = rate / 100 / 12;
-    const numberOfPayments = years * 12;
+    const payments = years * 12;
+
+    let low = 0;
+    let high = 3000000;
+    let estimatedPrice = 0;
+
+    for (let i = 0; i < 70; i++) {
+      const price = (low + high) / 2;
+      const loanAmount = Math.max(price - down, 0);
+
+      let principalInterest = 0;
+
+      if (loanAmount > 0 && monthlyRate > 0) {
+        principalInterest =
+          loanAmount *
+          ((monthlyRate * Math.pow(1 + monthlyRate, payments)) /
+            (Math.pow(1 + monthlyRate, payments) - 1));
+      } else if (loanAmount > 0 && payments > 0) {
+        principalInterest = loanAmount / payments;
+      }
+
+      const monthlyTaxes = (price * taxRate) / 12;
+      const monthlyInsurance = (price * annualInsuranceRate) / 12;
+
+      const housingPayment =
+        principalInterest +
+        monthlyTaxes +
+        monthlyInsurance +
+        monthlyHoa;
+
+      if (housingPayment <= availableHousingPayment) {
+        estimatedPrice = price;
+        low = price;
+      } else {
+        high = price;
+      }
+    }
+
+    const loanAmount = Math.max(estimatedPrice - down, 0);
 
     let principalInterest = 0;
 
     if (loanAmount > 0 && monthlyRate > 0) {
       principalInterest =
         loanAmount *
-        ((monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
-          (Math.pow(1 + monthlyRate, numberOfPayments) - 1));
-    } else if (loanAmount > 0 && numberOfPayments > 0) {
-      principalInterest = loanAmount / numberOfPayments;
+        ((monthlyRate * Math.pow(1 + monthlyRate, payments)) /
+          (Math.pow(1 + monthlyRate, payments) - 1));
     }
 
-    const monthlyTaxes = (price * (taxRate / 100)) / 12;
-    const monthlyInsurance = annualInsurance / 12;
+    const monthlyTaxes = (estimatedPrice * taxRate) / 12;
+    const monthlyInsurance =
+      (estimatedPrice * annualInsuranceRate) / 12;
 
-    const totalMonthly =
+    const totalHousingPayment =
       principalInterest +
       monthlyTaxes +
       monthlyInsurance +
-      monthlyHoa +
-      monthlyMI;
+      monthlyHoa;
 
     return {
-      down,
-      downPercent,
+      estimatedPrice,
       loanAmount,
       principalInterest,
       monthlyTaxes,
       monthlyInsurance,
       monthlyHoa,
-      monthlyMI,
-      totalMonthly,
+      totalHousingPayment,
+      maxTotalDebt,
+      availableHousingPayment,
     };
   }, [
-    homePrice,
-    downPaymentMode,
-    downPaymentPercent,
-    downPaymentDollars,
+    monthlyIncome,
+    monthlyDebts,
+    downPayment,
     interestRate,
     loanTerm,
+    dtiTarget,
     propertyTaxRate,
-    insurance,
+    insuranceRate,
     hoa,
-    mortgageInsurance,
   ]);
 
   const money = (value) =>
@@ -130,67 +158,18 @@ export default function MortgageCalculator() {
     borderBottom: "1px solid rgba(255,255,255,.14)",
   };
 
-  const toggleButton = (active) => ({
-    flex: 1,
-    border: "none",
-    borderRadius: "8px",
-    padding: "11px 12px",
-    cursor: "pointer",
-    fontWeight: "800",
-    fontSize: "14px",
-    background: active ? "#082b50" : "transparent",
-    color: active ? "#ffffff" : "#53677b",
-  });
-
-  const quickButton = {
-    border: "1px solid #d7dde5",
-    background: "#ffffff",
-    color: "#082b50",
-    borderRadius: "8px",
-    padding: "9px 11px",
-    cursor: "pointer",
-    fontWeight: "700",
-  };
-
-  const selectDownPaymentPercent = (percent) => {
-    const price = Number(homePrice) || 0;
-
-    setDownPaymentMode("percent");
-    setDownPaymentPercent(percent);
-    setDownPaymentDollars(price * (percent / 100));
-  };
-
-  const switchToPercent = () => {
-    const price = Number(homePrice) || 0;
-    const dollars = Number(downPaymentDollars) || 0;
-
-    if (price > 0) {
-      setDownPaymentPercent((dollars / price) * 100);
-    }
-
-    setDownPaymentMode("percent");
-  };
-
-  const switchToDollars = () => {
-    const price = Number(homePrice) || 0;
-    const percent = Number(downPaymentPercent) || 0;
-
-    setDownPaymentDollars(price * (percent / 100));
-    setDownPaymentMode("dollars");
-  };
-
   return (
     <main style={{ background: "#f7f8fa", minHeight: "100vh" }}>
       <section
         style={{
           background:
             "linear-gradient(135deg, #061d35 0%, #0b3762 100%)",
-          color: "white",
+          color: "#ffffff",
           textAlign: "center",
           padding: "72px 24px 64px",
         }}
       >
-        <div style={{ maxWidth: "850px", margin: "0 auto" }}>
+        <div style={{ maxWidth: "880px", margin: "0 auto" }}>
           <div
             style={{
               display: "inline-flex",
@@ -205,34 +184,33 @@ export default function MortgageCalculator() {
             }}
           >
             <Calculator size={18} />
-            Mortgage Payment Calculator
+            Home Affordability Calculator
           </div>
 
           <h1
-  style={{
-    fontSize: "clamp(40px, 6vw, 66px)",
-    lineHeight: "1.03",
-    margin: "0 0 22px",
-    color: "#ffffff",
-  }}
+            style={{
+              fontSize: "clamp(40px, 6vw, 66px)",
+              lineHeight: "1.03",
+              margin: "0 0 22px",
+              color: "#ffffff",
+            }}
           >
-            Turn a Home Price Into
+            How Much Home
             <br />
-            a Monthly Payment.
+            Could You Afford?
           </h1>
 
           <p
             style={{
-              maxWidth: "720px",
+              maxWidth: "730px",
               margin: "0 auto",
               fontSize: "18px",
               lineHeight: "1.7",
               color: "#dce8f4",
             }}
           >
-            Explore different home prices, down payments, and interest rates
-            to see how each decision could affect your estimated monthly
-            housing payment.
+            Enter your income, monthly debts, down payment, and estimated loan
+            terms to explore a potential home-price range.
           </p>
         </div>
       </section>
@@ -254,7 +232,7 @@ export default function MortgageCalculator() {
         >
           <div
             style={{
-              background: "white",
+              background: "#ffffff",
               borderRadius: "18px",
               padding: "32px",
               boxShadow: "0 15px 45px rgba(0,0,0,.08)",
@@ -268,7 +246,7 @@ export default function MortgageCalculator() {
                 marginBottom: "28px",
               }}
             >
-              <Home size={28} color="#d29b18" />
+              <Wallet size={28} color="#d29b18" />
 
               <h2
                 style={{
@@ -277,117 +255,50 @@ export default function MortgageCalculator() {
                   fontSize: "28px",
                 }}
               >
-                Your Numbers
+                Your Financial Picture
               </h2>
             </div>
 
             <div style={fieldStyle}>
-              <label style={labelStyle}>Home Price</label>
+              <label style={labelStyle}>
+                Gross Monthly Income
+              </label>
 
               <input
                 style={inputStyle}
                 type="number"
                 min="0"
-                value={homePrice}
-                onChange={(e) => setHomePrice(e.target.value)}
+                value={monthlyIncome}
+                onChange={(e) => setMonthlyIncome(e.target.value)}
               />
             </div>
 
             <div style={fieldStyle}>
-              <label style={labelStyle}>Down Payment</label>
+              <label style={labelStyle}>
+                Monthly Debt Payments
+              </label>
 
-              <div
-                style={{
-                  display: "flex",
-                  background: "#eef2f6",
-                  borderRadius: "10px",
-                  padding: "4px",
-                  marginBottom: "12px",
-                }}
-              >
-                <button
-                  type="button"
-                  style={toggleButton(downPaymentMode === "percent")}
-                  onClick={switchToPercent}
-                >
-                  <Percent
-                    size={15}
-                    style={{ verticalAlign: "middle", marginRight: "5px" }}
-                  />
-                  Percentage
-                </button>
+              <input
+                style={inputStyle}
+                type="number"
+                min="0"
+                value={monthlyDebts}
+                onChange={(e) => setMonthlyDebts(e.target.value)}
+              />
+            </div>
 
-                <button
-                  type="button"
-                  style={toggleButton(downPaymentMode === "dollars")}
-                  onClick={switchToDollars}
-                >
-                  <Banknote
-                    size={16}
-                    style={{ verticalAlign: "middle", marginRight: "5px" }}
-                  />
-                  Dollars
-                </button>
-              </div>
+            <div style={fieldStyle}>
+              <label style={labelStyle}>
+                Down Payment Available
+              </label>
 
-              {downPaymentMode === "percent" ? (
-                <input
-                  style={inputStyle}
-                  type="number"
-                  min="0"
-                  max="100"
-                  step="0.5"
-                  value={downPaymentPercent}
-                  onChange={(e) =>
-                    setDownPaymentPercent(e.target.value)
-                  }
-                />
-              ) : (
-                <input
-                  style={inputStyle}
-                  type="number"
-                  min="0"
-                  value={downPaymentDollars}
-                  onChange={(e) =>
-                    setDownPaymentDollars(e.target.value)
-                  }
-                />
-              )}
-
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "8px",
-                  marginTop: "12px",
-                }}
-              >
-                {[3, 3.5, 5, 10, 20].map((percent) => (
-                  <button
-                    key={percent}
-                    type="button"
-                    style={quickButton}
-                    onClick={() => selectDownPaymentPercent(percent)}
-                  >
-                    {percent}%
-                  </button>
-                ))}
-              </div>
-
-              <div
-                style={{
-                  marginTop: "12px",
-                  padding: "11px 13px",
-                  borderRadius: "8px",
-                  background: "#f6f8fa",
-                  color: "#53677b",
-                  fontSize: "13px",
-                }}
-              >
-                {money(results.down)} down
-                {" • "}
-                {results.downPercent.toFixed(1)}% of purchase price
-              </div>
+              <input
+                style={inputStyle}
+                type="number"
+                min="0"
+                value={downPayment}
+                onChange={(e) => setDownPayment(e.target.value)}
+              />
             </div>
 
             <div style={fieldStyle}>
@@ -414,8 +325,35 @@ export default function MortgageCalculator() {
                 <option value="30">30 Years</option>
                 <option value="20">20 Years</option>
                 <option value="15">15 Years</option>
-                <option value="10">10 Years</option>
               </select>
+            </div>
+
+            <div style={fieldStyle}>
+              <label style={labelStyle}>
+                Target Debt-to-Income Ratio (%)
+              </label>
+
+              <input
+                style={inputStyle}
+                type="number"
+                min="1"
+                max="60"
+                step="1"
+                value={dtiTarget}
+                onChange={(e) => setDtiTarget(e.target.value)}
+              />
+
+              <div
+                style={{
+                  marginTop: "9px",
+                  color: "#687786",
+                  fontSize: "12px",
+                  lineHeight: "1.5",
+                }}
+              >
+                DTI limits vary by loan program and borrower profile. This
+                setting is for estimating only.
+              </div>
             </div>
 
             <div style={fieldStyle}>
@@ -429,25 +367,28 @@ export default function MortgageCalculator() {
                 min="0"
                 step="0.1"
                 value={propertyTaxRate}
-                onChange={(e) => setPropertyTaxRate(e.target.value)}
+                onChange={(e) =>
+                  setPropertyTaxRate(e.target.value)
+                }
               />
             </div>
 
             <div style={fieldStyle}>
               <label style={labelStyle}>
-                Homeowners Insurance ($ per year)
+                Estimated Homeowners Insurance (% per year)
               </label>
 
               <input
                 style={inputStyle}
                 type="number"
                 min="0"
-                value={insurance}
-                onChange={(e) => setInsurance(e.target.value)}
+                step="0.1"
+                value={insuranceRate}
+                onChange={(e) => setInsuranceRate(e.target.value)}
               />
             </div>
 
-            <div style={fieldStyle}>
+            <div style={{ ...fieldStyle, marginBottom: 0 }}>
               <label style={labelStyle}>HOA ($ per month)</label>
 
               <input
@@ -458,29 +399,13 @@ export default function MortgageCalculator() {
                 onChange={(e) => setHoa(e.target.value)}
               />
             </div>
-
-            <div style={{ ...fieldStyle, marginBottom: 0 }}>
-              <label style={labelStyle}>
-                Estimated Mortgage Insurance ($ per month)
-              </label>
-
-              <input
-                style={inputStyle}
-                type="number"
-                min="0"
-                value={mortgageInsurance}
-                onChange={(e) =>
-                  setMortgageInsurance(e.target.value)
-                }
-              />
-            </div>
           </div>
 
           <div
             style={{
               background:
                 "linear-gradient(145deg, #061d35 0%, #0b3762 100%)",
-              color: "white",
+              color: "#ffffff",
               borderRadius: "18px",
               padding: "36px",
               boxShadow: "0 18px 50px rgba(0,0,0,.16)",
@@ -497,9 +422,9 @@ export default function MortgageCalculator() {
                 marginBottom: "10px",
               }}
             >
-              <DollarSign size={24} />
+              <Home size={24} />
 
-              <strong>ESTIMATED MONTHLY PAYMENT</strong>
+              <strong>ESTIMATED HOME PRICE</strong>
             </div>
 
             <div
@@ -510,7 +435,7 @@ export default function MortgageCalculator() {
                 margin: "18px 0 10px",
               }}
             >
-              {money(results.totalMonthly)}
+              {money(results.estimatedPrice)}
             </div>
 
             <p
@@ -520,8 +445,13 @@ export default function MortgageCalculator() {
                 marginBottom: "30px",
               }}
             >
-              Estimated total monthly housing payment
+              Based on the assumptions you entered
             </p>
+
+            <div style={breakdownRow}>
+              <span>Estimated Housing Payment</span>
+              <strong>{money(results.totalHousingPayment)}</strong>
+            </div>
 
             <div style={breakdownRow}>
               <span>Principal & Interest</span>
@@ -541,11 +471,6 @@ export default function MortgageCalculator() {
             <div style={breakdownRow}>
               <span>HOA</span>
               <strong>{money(results.monthlyHoa)}</strong>
-            </div>
-
-            <div style={breakdownRow}>
-              <span>Mortgage Insurance</span>
-              <strong>{money(results.monthlyMI)}</strong>
             </div>
 
             <div
@@ -579,7 +504,7 @@ export default function MortgageCalculator() {
                     marginTop: "5px",
                   }}
                 >
-                  {money(results.down)}
+                  {money(downPayment)}
                 </strong>
               </div>
 
@@ -624,11 +549,11 @@ export default function MortgageCalculator() {
               }}
             >
               <strong style={{ color: "#e5b843" }}>
-                Want the real numbers?
+                Qualification is more than a DTI calculation.
               </strong>
               <br />
-              I'll compare actual loan options, estimated closing costs,
-              and payment strategies for your specific situation.
+              Credit, loan program, assets, reserves, property type, and other
+              factors can all affect your actual buying power.
             </div>
 
             <a
@@ -647,7 +572,7 @@ export default function MortgageCalculator() {
                 marginTop: "20px",
               }}
             >
-              Build My Mortgage Game Plan™
+              Find Out What I Can Really Afford
             </a>
           </div>
         </div>
@@ -672,12 +597,11 @@ export default function MortgageCalculator() {
             Important: This calculator provides estimates only.
           </strong>
 
-          Results are provided for informational and educational purposes and
-          are not a commitment to lend, an offer of credit, or a personalized
-          loan quote. Actual payments, rates, taxes, insurance, mortgage
-          insurance, HOA dues, closing costs, fees, and loan terms may vary.
-          Loan approval is subject to underwriting, verification of
-          information, property eligibility, and program availability.
+          The result is not a pre-approval, loan approval, commitment to lend,
+          or personalized loan quote. Actual qualification depends on credit,
+          income documentation, liabilities, assets, loan program,
+          underwriting requirements, property eligibility, interest rates,
+          taxes, insurance, and other factors.
         </div>
       </section>
     </main>
