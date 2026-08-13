@@ -13,6 +13,7 @@ import Testimonials from "./components/Testimonials";
 import ServiceArea from "./components/ServiceArea";
 import FAQ from "./components/FAQ";
 import ContactSection from "./components/ContactSection";
+import LeadForm from "./components/LeadForm";
 import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
 import StickyCTA from "./components/StickyCTA";
@@ -130,6 +131,10 @@ function HomePage() {
       </section>
 
       <section className="reveal-section">
+        <LeadForm />
+      </section>
+
+      <section className="reveal-section">
         <FinalCTA />
       </section>
     </>
@@ -141,6 +146,10 @@ function ContactPage() {
     <main className="contact-page">
       <section className="reveal-section is-visible">
         <ContactSection />
+      </section>
+
+      <section className="reveal-section is-visible">
+        <LeadForm />
       </section>
 
       <section className="reveal-section is-visible">
