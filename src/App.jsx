@@ -34,6 +34,124 @@ import ClosingCostCalculator from "./pages/ClosingCostCalculator";
 
 import "./App.css";
 
+const seoByPath = {
+  "/": {
+    title: "Texas Mortgage Lender | Lock With Mach | Eric Mach",
+    description:
+      "Texas mortgage guidance with a clear Mortgage Game Plan™. Explore Conventional, FHA, VA, investment, refinance, and homebuyer loan options with Eric Mach.",
+  },
+
+  "/mortgage-game-plan": {
+    title: "Mortgage Game Plan™ | Texas Home Loan Strategy | Lock With Mach",
+    description:
+      "Build a personalized Mortgage Game Plan™ for your Texas home purchase. Understand loan options, down payment strategies, monthly payments, and next steps before you make an offer.",
+  },
+
+  "/mortgage-calculator": {
+    title: "Mortgage Payment Calculator | Texas Homebuyers | Lock With Mach",
+    description:
+      "Estimate your monthly mortgage payment including principal, interest, property taxes, homeowners insurance, HOA dues, and mortgage insurance.",
+  },
+
+  "/home-affordability-calculator": {
+    title: "Home Affordability Calculator | How Much Home Can I Afford?",
+    description:
+      "Estimate how much home you may be able to afford based on income, monthly debts, down payment, interest rate, property taxes, insurance, and debt-to-income ratio.",
+  },
+
+  "/refinance-calculator": {
+    title: "Refinance Calculator | Estimate Mortgage Savings | Lock With Mach",
+    description:
+      "Compare your current mortgage with a potential refinance. Estimate monthly savings, new payments, closing costs, and your break-even point.",
+  },
+
+  "/rent-vs-buy-calculator": {
+    title: "Rent vs Buy Calculator | Texas Homebuyers | Lock With Mach",
+    description:
+      "Compare renting versus buying a home over time. Explore estimated payments, rent increases, home appreciation, equity, and potential long-term costs.",
+  },
+
+  "/closing-cost-calculator": {
+    title: "Closing Cost Calculator | Estimate Cash to Close | Lock With Mach",
+    description:
+      "Estimate your potential cash to close including down payment, lender fees, title costs, appraisal, prepaid taxes, insurance, escrows, and available credits.",
+  },
+
+  "/first-time-homebuyers": {
+    title: "First-Time Homebuyer Loans in Texas | Lock With Mach",
+    description:
+      "Explore Texas first-time homebuyer financing, low down payment mortgage options, potential assistance programs, and a personalized Mortgage Game Plan™.",
+  },
+
+  "/va-loans-texas": {
+    title: "VA Loans in Texas | Veteran Home Loans | Lock With Mach",
+    description:
+      "Explore VA home loan benefits for eligible Texas veterans and service members, including flexible financing, potential zero-down options, and personalized mortgage guidance.",
+  },
+
+  "/fha-loans": {
+    title: "FHA Loans in Texas | FHA Mortgage Guidance | Lock With Mach",
+    description:
+      "Learn how FHA loans may help Texas homebuyers with flexible qualification guidelines and down payments as low as 3.5% for qualified borrowers.",
+  },
+
+  "/conventional-loans": {
+    title: "Conventional Loans in Texas | Lock With Mach",
+    description:
+      "Explore conventional mortgage options for Texas homebuyers, including low down payment strategies, flexible loan structures, and personalized financing guidance.",
+  },
+
+  "/investment-loans": {
+    title: "Investment Property Loans in Texas | Lock With Mach",
+    description:
+      "Explore financing options for Texas investment properties, including rental property loans and strategies for building or expanding a real estate portfolio.",
+  },
+
+  "/refinancing": {
+    title: "Mortgage Refinancing in Texas | Lock With Mach",
+    description:
+      "Explore Texas mortgage refinancing options for lowering payments, changing loan terms, accessing equity, or consolidating debt when refinancing makes financial sense.",
+  },
+
+  "/buy-before-you-sell": {
+    title: "Buy Before You Sell in Texas | Home Equity Strategies",
+    description:
+      "Explore financing strategies that may allow Texas homeowners to purchase their next home before selling their current property and avoid contingent offers.",
+  },
+
+  "/contact": {
+    title: "Contact Eric Mach | Texas Mortgage Guidance | Lock With Mach",
+    description:
+      "Tell Eric Mach what you're trying to accomplish and start building a personalized Mortgage Game Plan™ for your Texas home purchase, refinance, or investment property.",
+  },
+};
+
+function SEOManager() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const seo = seoByPath[location.pathname] || {
+      title: "Lock With Mach | Texas Mortgage Guidance",
+      description:
+        "Clear mortgage guidance, personalized strategy, and home loan education for buyers, homeowners, veterans, and investors throughout Texas.",
+    };
+
+    document.title = seo.title;
+
+    let descriptionTag = document.querySelector('meta[name="description"]');
+
+    if (!descriptionTag) {
+      descriptionTag = document.createElement("meta");
+      descriptionTag.setAttribute("name", "description");
+      document.head.appendChild(descriptionTag);
+    }
+
+    descriptionTag.setAttribute("content", seo.description);
+  }, [location.pathname]);
+
+  return null;
+}
+
 function RevealSections() {
   const location = useLocation();
 
@@ -201,6 +319,7 @@ function NotFoundPage() {
 function App() {
   return (
     <div className="site-shell">
+      <SEOManager />
       <ScrollManager />
       <RevealSections />
 

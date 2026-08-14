@@ -333,6 +333,53 @@ export default function LeadForm() {
           </div>
 
           <div style={fieldStyle}>
+            <label style={labelStyle}>City or Area</label>
+            <input
+              style={inputStyle}
+              type="text"
+              name="city_or_area"
+              placeholder="Example: Frisco, Prosper, Plano"
+            />
+          </div>
+
+          <div style={fieldStyle}>
+            <label style={labelStyle}>Target Timeframe</label>
+            <select
+              style={inputStyle}
+              name="timeframe"
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Select one
+              </option>
+              <option value="ASAP">ASAP</option>
+              <option value="1-3 Months">1–3 Months</option>
+              <option value="3-6 Months">3–6 Months</option>
+              <option value="6+ Months">6+ Months</option>
+              <option value="Just Researching">Just Researching</option>
+            </select>
+          </div>
+
+          <div style={fieldStyle}>
+            <label style={labelStyle}>
+              Do You Already Have a Realtor?
+            </label>
+            <select
+              style={inputStyle}
+              name="has_realtor"
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Select one
+              </option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="Not Sure Yet">Not Sure Yet</option>
+              <option value="Not Applicable">Not Applicable</option>
+            </select>
+          </div>
+
+          <div style={fieldStyle}>
             <label style={labelStyle}>Preferred Contact Method</label>
             <select
               style={inputStyle}
