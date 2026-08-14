@@ -15,8 +15,9 @@ function ContactSection() {
         <p>
           Whether you're buying your first home, moving into your next one,
           refinancing, investing, or simply trying to understand your options,
-          let's start with a conversation. I'll answer your questions, learn
-          about your goals, and help you determine the right next step.
+          start by telling me what you're trying to accomplish. I'll review
+          your information personally and help you determine the right next
+          step.
         </p>
 
         <div className="contact-promise">
@@ -42,21 +43,20 @@ function ContactSection() {
           </span>
 
           <h3>
-            Schedule a Strategy Call
+            Tell Me About Your Situation
           </h3>
 
           <p>
-            We'll talk about your goals, answer your questions, and start
-            building a personalized Mortgage Game Plan™ for your situation.
+            Complete the short Mortgage Game Plan™ form and let me know what
+            you're trying to accomplish. I'll review it personally and follow
+            up with you directly.
           </p>
 
           <a
             className="button button-gold"
-            href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
-            target="_blank"
-            rel="noreferrer"
+            href="/#lead-form"
           >
-            Schedule My Strategy Call
+            Get My Mortgage Game Plan™
           </a>
         </article>
 
@@ -66,8 +66,8 @@ function ContactSection() {
           </h3>
 
           <p>
-            Have a quick question? Call or text me directly. If I'm with
-            another client, I'll get back to you as soon as I can.
+            Have a quick question? Call or text me directly. If I'm unavailable,
+            I'll get back to you as soon as I can.
           </p>
 
           <a
