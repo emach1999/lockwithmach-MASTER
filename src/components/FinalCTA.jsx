@@ -20,9 +20,7 @@ function FinalCTA() {
       <div className="hero-actions final-cta-actions">
         <a
           className="button button-gold"
-          href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
-          target="_blank"
-          rel="noreferrer"
+          href="/#lead-form"
         >
           Build My Mortgage Game Plan™
         </a>

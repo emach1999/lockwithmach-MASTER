@@ -71,16 +71,35 @@ function RevealSections() {
   return null;
 }
 
-function ScrollToTop() {
+function ScrollManager() {
   const location = useLocation();
 
   useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace("#", "");
+
+      const timer = setTimeout(() => {
+        const target = document.getElementById(targetId);
+
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }, 100);
+
+      return () => clearTimeout(timer);
+    }
+
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "instant",
     });
-  }, [location.pathname]);
+
+    return undefined;
+  }, [location.pathname, location.hash]);
 
   return null;
 }
@@ -182,7 +201,7 @@ function NotFoundPage() {
 function App() {
   return (
     <div className="site-shell">
-      <ScrollToTop />
+      <ScrollManager />
       <RevealSections />
 
       <Header />

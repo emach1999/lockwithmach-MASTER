@@ -26,20 +26,16 @@ function Hero() {
         <div className="hero-actions">
           <a
             className="button button-primary"
-            href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
-            target="_blank"
-            rel="noreferrer"
+            href="#lead-form"
           >
             Build My Mortgage Game Plan™
           </a>
 
           <a
             className="button button-secondary"
-            href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
-            target="_blank"
-            rel="noreferrer"
+            href="tel:2146839034"
           >
-            Schedule a Strategy Call
+            Call/Text: (214) 683-9034
           </a>
         </div>
 

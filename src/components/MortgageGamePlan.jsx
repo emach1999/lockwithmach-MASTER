@@ -96,9 +96,7 @@ function MortgageGamePlan() {
 
         <a
           className="button button-primary"
-          href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
-          target="_blank"
-          rel="noreferrer"
+          href="/#lead-form"
         >
           Build My Mortgage Game Plan™
         </a>

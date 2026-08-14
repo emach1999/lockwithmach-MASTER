@@ -219,11 +219,10 @@ export default function Header() {
 
       <a
         className="header-cta"
-        href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
-        target="_blank"
-        rel="noreferrer"
+        href="/#lead-form"
+        onClick={closeEverything}
       >
-        Schedule a Call
+        Get My Mortgage Game Plan™
       </a>
     </header>
   );

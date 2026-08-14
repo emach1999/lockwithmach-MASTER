@@ -209,12 +209,12 @@ export default function MortgageCalculator() {
           </div>
 
           <h1
-  style={{
-    fontSize: "clamp(40px, 6vw, 66px)",
-    lineHeight: "1.03",
-    margin: "0 0 22px",
-    color: "#ffffff",
-  }}
+            style={{
+              fontSize: "clamp(40px, 6vw, 66px)",
+              lineHeight: "1.03",
+              margin: "0 0 22px",
+              color: "#ffffff",
+            }}
           >
             Turn a Home Price Into
             <br />
@@ -632,9 +632,7 @@ export default function MortgageCalculator() {
             </div>
 
             <a
-              href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
-              target="_blank"
-              rel="noreferrer"
+              href="/#lead-form"
               style={{
                 display: "block",
                 textAlign: "center",

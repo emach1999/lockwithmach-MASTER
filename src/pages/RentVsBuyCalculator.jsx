@@ -604,9 +604,7 @@ export default function RentVsBuyCalculator() {
             </div>
 
             <a
-              href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
-              target="_blank"
-              rel="noreferrer"
+              href="/#lead-form"
               style={{
                 display: "block",
                 textAlign: "center",

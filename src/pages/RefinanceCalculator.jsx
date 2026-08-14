@@ -546,9 +546,7 @@ export default function RefinanceCalculator() {
             </div>
 
             <a
-              href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
-              target="_blank"
-              rel="noreferrer"
+            href="/#lead-form"
               style={{
                 display: "block",
                 textAlign: "center",

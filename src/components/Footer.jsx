@@ -30,12 +30,12 @@ function Footer() {
 
         <strong>Explore</strong>
 
-        <p><a href="#">Home</a></p>
-        <p><a href="#about">Meet Eric</a></p>
-        <p><a href="#game-plan">Mortgage Game Plan™</a></p>
-        <p><a href="#solutions">Loan Solutions</a></p>
-        <p><a href="#faq">Frequently Asked Questions</a></p>
-        <p><a href="#contact">Contact</a></p>
+        <p><a href="/">Home</a></p>
+        <p><a href="/#about">Meet Eric</a></p>
+        <p><a href="/#game-plan">Mortgage Game Plan™</a></p>
+        <p><a href="/#solutions">Loan Solutions</a></p>
+        <p><a href="/#faq">Frequently Asked Questions</a></p>
+        <p><a href="/#contact">Contact</a></p>
 
       </div>
 
@@ -68,95 +68,94 @@ function Footer() {
         <strong>Let's Build Your Plan</strong>
 
         <p>
-          Schedule a free strategy call and let's create a personalized
-          Mortgage Game Plan™ built around your goals.
+          Tell me what you're trying to accomplish, and I'll personally
+          follow up to help you understand your options and build a
+          Mortgage Game Plan™ around your goals.
         </p>
 
         <a
           className="button button-gold footer-button"
-          href="https://calendar.app.google/RgxDCZDHUD7gUCXc6"
-          target="_blank"
-          rel="noreferrer"
+          href="/#lead-form"
         >
-          Schedule My Call
+          Get My Mortgage Game Plan™
         </a>
 
       </div>
 
-<div className="footer-compliance">
+      <div className="footer-compliance">
 
-  <div className="footer-compliance-logo">
+        <div className="footer-compliance-logo">
 
-    <p className="footer-license-title">
-      Licensed Through
-    </p>
+          <p className="footer-license-title">
+            Licensed Through
+          </p>
 
-    <img
-      src={mortgageProLogo}
-      alt="Mortgage PRO Loan Services"
-    />
+          <img
+            src={mortgageProLogo}
+            alt="Mortgage PRO Loan Services"
+          />
 
-  </div>
+        </div>
 
-  <div className="footer-license-grid">
+        <div className="footer-license-grid">
 
-    <div>
+          <div>
 
-      <h4>Loan Originator</h4>
+            <h4>Loan Originator</h4>
 
-      <p>Eric Mach</p>
+            <p>Eric Mach</p>
 
-      <p>NMLS #2510620</p>
+            <p>NMLS #2510620</p>
 
-    </div>
+          </div>
 
-    <div>
+          <div>
 
-      <h4>Broker</h4>
+            <h4>Broker</h4>
 
-      <p>Mortgage PRO Loan Services LLC</p>
+            <p>Mortgage PRO Loan Services LLC</p>
 
-      <p>Company NMLS #1975913</p>
+            <p>Company NMLS #1975913</p>
 
-    </div>
+          </div>
 
-    <div>
+          <div>
 
-      <h4>Corporate Office</h4>
+            <h4>Corporate Office</h4>
 
-      <p>(404) 698-1108</p>
+            <p>(404) 698-1108</p>
 
-      <p>
-        2130 Peachtree Parkway
-        <br />
-        Suite C
-        <br />
-        Cumming, GA 30041
-      </p>
+            <p>
+              2130 Peachtree Parkway
+              <br />
+              Suite C
+              <br />
+              Cumming, GA 30041
+            </p>
 
-    </div>
+          </div>
 
-  </div>
+        </div>
 
-  <p className="footer-legal">
+        <p className="footer-legal">
 
-    Equal Housing Opportunity
+          Equal Housing Opportunity
 
-    <br /><br />
+          <br /><br />
 
-    This website is provided for informational purposes only and is not
-    a commitment to lend. Loan approval is subject to underwriting,
-    verification of information, and program availability.
+          This website is provided for informational purposes only and is not
+          a commitment to lend. Loan approval is subject to underwriting,
+          verification of information, and program availability.
 
-    <br /><br />
+          <br /><br />
 
-    © 2026 Lock With Mach • All Rights Reserved
+          © 2026 Lock With Mach • All Rights Reserved
 
-  </p>
+        </p>
 
-</div>
+      </div>
 
-</footer>
+    </footer>
   );
 }
 
